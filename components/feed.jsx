@@ -70,7 +70,14 @@ const Feed = () => {
     }
 
     fetchPosts();
-  },[session?.user.id])
+    
+    const intervalId = setInterval(() => {
+      fetchPosts(); // Refetch posts every 5 seconds
+    }, 5000);
+
+    return () => clearInterval(intervalId); 
+
+  },[])
 
 
   return (
