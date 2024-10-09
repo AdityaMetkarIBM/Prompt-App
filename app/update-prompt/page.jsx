@@ -79,4 +79,10 @@ const Page = () => {
   )
 }
 
-export default Page
+const SuspensePage = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Page />
+  </Suspense>
+);
+
+export default SuspensePage
