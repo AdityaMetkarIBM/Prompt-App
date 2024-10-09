@@ -62,7 +62,10 @@ const Feed = () => {
   useEffect(() => {
 
     const fetchPosts = async () => {
-      const response = await fetch('/api/prompt/')
+      const response = await fetch('/api/prompt/',{
+        method:'GET',
+        cache: 'no-cache'
+      })
       const data = await response.json();
       
       console.log(data)
@@ -70,13 +73,6 @@ const Feed = () => {
     }
 
     fetchPosts();
-    
-    const intervalId = setInterval(() => {
-      fetchPosts(); // Refetch posts every 5 seconds
-    }, 5000);
-
-    return () => clearInterval(intervalId); 
-
   },[])
 
 
